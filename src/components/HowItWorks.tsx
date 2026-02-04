@@ -32,25 +32,25 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section className="section py-24 border-t border-white/5">
+    <section id="features" className="section howitworks-section">
       {/* Section Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="text-center mb-16"
+        className="section-header"
       >
-        <h2 className="text-4xl md:text-5xl font-bold mb-4">
+        <h2 className="section-title">
           How It <span className="text-gradient-primary">Works</span>
         </h2>
-        <p className="text-muted text-lg max-w-xl mx-auto">
+        <p className="section-subtitle section-subtitle-narrow">
           Start reading better in under 30 seconds.
         </p>
       </motion.div>
 
       {/* Steps Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+      <div className="howitworks-grid">
         {steps.map((step, index) => (
           <motion.div
             key={step.step}
@@ -58,24 +58,24 @@ export default function HowItWorks() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.15 }}
-            className="text-center relative"
+            className="howitworks-step"
           >
             {/* Connector Line (hidden on mobile) */}
             {index < steps.length - 1 && (
-              <div className="hidden md:block absolute top-8 left-[60%] w-full h-px bg-gradient-to-r from-primary/30 to-transparent" />
+              <div className="howitworks-connector" />
             )}
             
             {/* Icon */}
-            <div className="w-16 h-16 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center mx-auto mb-4 relative">
+            <div className="howitworks-icon">
               <step.icon size={28} className="text-primary" />
-              <span className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-primary text-xs font-bold flex items-center justify-center text-black">
+              <span className="howitworks-badge">
                 {index + 1}
               </span>
             </div>
             
             {/* Content */}
-            <h3 className="text-lg font-semibold mb-2">{step.title}</h3>
-            <p className="text-muted text-sm">{step.description}</p>
+            <h3 className="howitworks-title">{step.title}</h3>
+            <p className="howitworks-desc">{step.description}</p>
           </motion.div>
         ))}
       </div>

@@ -48,7 +48,7 @@ export default function FileUploader({ onFileLoaded, onBack, onViewLibrary }: Fi
         animate={{ opacity: 1, scale: 1 }}
         className="upload-wrapper"
       >
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">Upload Your Book</h2>
+        <h2 className="upload-title">Upload Your Book</h2>
 
         <div
           className={`glass-panel upload-zone ${isDragOver ? 'active' : ''}`}
@@ -60,12 +60,12 @@ export default function FileUploader({ onFileLoaded, onBack, onViewLibrary }: Fi
           onDrop={handleDrop}
           onClick={() => document.getElementById('file-input')?.click()}
         >
-          <div className="w-20 h-20 rounded-full bg-[#111] flex items-center justify-center">
+          <div className="upload-icon">
             <Upload size={40} className="text-primary" />
           </div>
           
           <div>
-            <h3 className="text-2xl font-bold mb-2">Drop your file here</h3>
+            <h3 className="upload-main-text">Drop your file here</h3>
             <p className="text-muted">or click to browse</p>
           </div>
 

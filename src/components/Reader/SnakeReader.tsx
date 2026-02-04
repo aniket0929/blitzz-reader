@@ -49,8 +49,11 @@ export default function SnakeReader({
     const containerRect = containerRef.current.getBoundingClientRect();
     // Use 680px max-width or container width, whichever is smaller
     const maxWidth = Math.min(680, containerRect.width - 64);
-    const avgCharWidth = fontSize * 0.55;
+    // More conservative character width estimate to account for wrapping
+    const avgCharWidth = fontSize * 0.6;
     const spaceWidth = fontSize * 0.3;
+    // Add buffer for flex gap and wrapping
+    const bufferWidth = fontSize * 0.5;
     
     const newLines: LineData[] = [];
     let currentLine: { word: string; globalIndex: number; isParagraphBreak?: boolean }[] = [];
@@ -82,7 +85,8 @@ export default function SnakeReader({
       
       const wordWidth = word.length * avgCharWidth + spaceWidth;
       
-      if (currentLineWidth + wordWidth > maxWidth && currentLine.length > 0) {
+      // More conservative line breaking to prevent wrapping
+      if (currentLineWidth + wordWidth + bufferWidth > maxWidth && currentLine.length > 0) {
         // Line is full, push it and start a new one
         newLines.push({
           words: currentLine,
@@ -192,6 +196,11 @@ export default function SnakeReader({
   // Keep 3 lines above the current line visible
   const scrollOffset = Math.max(0, currentLineIndex - 3) * lineHeight;
 
+  // Adjust scroll offset to keep highlight in viewport
+  const containerHeight = containerRef.current?.clientHeight || 0;
+  const maxScrollOffset = Math.max(0, lines.length * lineHeight - containerHeight + 8 * fontSize);
+  const adjustedScrollOffset = Math.min(scrollOffset, maxScrollOffset);
+
   // Check if a line is a paragraph break
   const isParagraphBreakLine = (line: LineData) => {
     return line.words.length === 1 && line.words[0].isParagraphBreak;
@@ -206,8 +215,8 @@ export default function SnakeReader({
         ref={contentRef}
         className="snake-reader-content"
         style={{
-          transform: `translateY(-${scrollOffset}px)`,
-          transition: isPlaying ? 'transform 0.5s ease-out' : 'none',
+          transform: `translateY(-${adjustedScrollOffset}px)`,
+          transition: isPlaying ? 'transform 0.15s linear' : 'none',
         }}
       >
         {lines.map((line, lineIdx) => {

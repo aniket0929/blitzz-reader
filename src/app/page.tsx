@@ -12,12 +12,12 @@ export default function Home() {
   const router = useRouter();
 
   return (
-    <main className="bg-background text-foreground overflow-x-hidden selection:bg-primary/30">
+    <main className="home-main">
       <Navbar />
       
       <LandingHero onStart={() => router.push('/upload')} />
       
-      <div className="relative z-10 bg-background/95 backdrop-blur-3xl">
+      <div className="home-sections">
         <Features />
         <HowItWorks />
         <About />

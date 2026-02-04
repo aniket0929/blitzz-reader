@@ -42,7 +42,7 @@ export default function LibraryBookCard({
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9 }}
-      className="glass-panel library-card group w-full max-w-[400px] flex-grow"
+      className="glass-panel library-card"
       onClick={() => onOpen(book)}
     >
       {/* Progress bar */}
@@ -51,8 +51,8 @@ export default function LibraryBookCard({
       </div>
 
       <div className="library-card-content">
-        <div className="flex-1 min-w-0">
-          <h3 className="library-card-title group-hover:text-primary transition-colors">
+        <div className="library-card-main">
+          <h3 className="library-card-title">
             {book.name}
           </h3>
           <div className="library-card-meta">
@@ -61,7 +61,7 @@ export default function LibraryBookCard({
             <span>{progress}% complete</span>
           </div>
           {book.bookmarks.length > 0 && (
-            <div className="library-card-bookmarks flex items-center gap-1">
+            <div className="library-card-bookmarks">
               📑 {book.bookmarks.length} bookmark{book.bookmarks.length > 1 ? 's' : ''}
             </div>
           )}
@@ -72,7 +72,7 @@ export default function LibraryBookCard({
             e.stopPropagation();
             onDeleteRequest(book.id);
           }}
-          className="btn-control delete-btn opacity-0 group-hover:opacity-100 transition-opacity"
+          className="btn-control delete-btn"
           title="Delete book"
         >
           <Trash2 size={18} />
@@ -83,16 +83,16 @@ export default function LibraryBookCard({
       {isDeleteConfirmVisible && (
         <div className="delete-confirm" onClick={(e) => e.stopPropagation()}>
           <p className="font-semibold">Delete this book?</p>
-          <div className="flex gap-2">
+          <div className="library-delete-actions">
             <button 
               onClick={() => onDeleteConfirm(book.id)} 
-              className="btn bg-red-500 hover:bg-red-600 text-white py-1 px-4 rounded-md text-sm"
+              className="btn btn-delete text-white py-1 px-4 text-sm"
             >
               Delete
             </button>
             <button 
               onClick={onDeleteCancel} 
-              className="btn border border-border hover:bg-white/10 py-1 px-4 rounded-md text-sm text-foreground"
+              className="btn btn-cancel border border-border hover:bg-white/10 py-1 px-4 text-sm text-foreground"
             >
               Cancel
             </button>

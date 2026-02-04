@@ -26,19 +26,19 @@ export default function ModeSelectPage() {
   if (!words || words.length === 0) return null;
 
   return (
-    <main className="min-h-screen bg-background text-foreground overflow-hidden">
+    <main className="page-full">
       <motion.div 
         initial={{ opacity: 0 }} 
         animate={{ opacity: 1 }} 
         className="page-center relative"
       >
-        <button onClick={() => router.push('/upload')} className="back-button btn group flex items-center gap-2">
-          <span className="group-hover:-translate-x-1 transition-transform">←</span> Back
+        <button onClick={() => router.push('/upload')} className="back-button btn">
+          ← Back
         </button>
 
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Choose Your <span className="text-gradient-primary">Mode</span></h2>
-          <p className="text-muted text-lg max-w-xl mx-auto">
+        <div className="section-header">
+          <h2 className="section-title">Choose Your <span className="text-gradient-primary">Mode</span></h2>
+          <p className="section-subtitle">
             Pick your reading style. Each mode is designed to keep you in flow.
           </p>
         </div>
@@ -49,9 +49,9 @@ export default function ModeSelectPage() {
             <div className="mode-icon-box">
               <Zap size={32} className="text-primary" />
             </div>
-            <h3 className="text-2xl font-bold mb-1">Flash Mode</h3>
-            <p className="text-primary/60 text-xs font-medium mb-2">RSVP Technology</p>
-            <p className="text-muted leading-relaxed text-sm">Words flash one at a time for maximum speed. Best for articles and short content.</p>
+            <h3 className="mode-title">Flash Mode</h3>
+            <p className="mode-subtitle">RSVP Technology</p>
+            <p className="mode-desc">Words flash one at a time for maximum speed. Best for articles and short content.</p>
           </div>
 
           {/* Flow Mode */}
@@ -59,9 +59,9 @@ export default function ModeSelectPage() {
             <div className="mode-icon-box">
               <Waves size={32} className="text-primary" />
             </div>
-            <h3 className="text-2xl font-bold mb-1">Flow Mode</h3>
-            <p className="text-primary/60 text-xs font-medium mb-2">River Reading</p>
-            <p className="text-muted leading-relaxed text-sm">Smooth scrolling text stream. Read naturally at a controlled, guided pace.</p>
+            <h3 className="mode-title">Flow Mode</h3>
+            <p className="mode-subtitle">River Reading</p>
+            <p className="mode-desc">Smooth scrolling text stream. Read naturally at a controlled, guided pace.</p>
           </div>
 
           {/* Book Mode */}
@@ -69,9 +69,9 @@ export default function ModeSelectPage() {
             <div className="mode-icon-box">
               <BookOpen size={32} className="text-primary" />
             </div>
-            <h3 className="text-2xl font-bold mb-1">Book Mode</h3>
-            <p className="text-primary/60 text-xs font-medium mb-2">Page Flow</p>
-            <p className="text-muted leading-relaxed text-sm">Full page view with word highlighting. Best for books and long-form content.</p>
+            <h3 className="mode-title">Book Mode</h3>
+            <p className="mode-subtitle">Page Flow</p>
+            <p className="mode-desc">Full page view with word highlighting. Best for books and long-form content.</p>
           </div>
         </div>
       </motion.div>

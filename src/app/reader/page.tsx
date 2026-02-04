@@ -114,7 +114,7 @@ export default function ReaderPage() {
 
   return (
     <main className="reader-page">
-      <div className={`w-full h-full ${mode === 'word' ? 'flex items-center justify-center' : ''}`}>
+      <div className={`reader-content ${mode === 'word' ? 'flex-center' : ''}`}>
         {mode === 'word' ? (
           <OneWordReader word={words[currentIndex] || ''} fontSize={fontSize} />
         ) : mode === 'line' ? (

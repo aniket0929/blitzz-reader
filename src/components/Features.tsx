@@ -44,25 +44,25 @@ const features = [
 
 export default function Features() {
   return (
-    <section id="features" className="section py-24">
+    <section className="section features-section">
       {/* Section Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="text-center mb-16"
+        className="section-header"
       >
-        <h2 className="text-4xl md:text-5xl font-bold mb-4">
+        <h2 className="section-title">
           Three Ways to <span className="text-gradient-primary">Focus</span>
         </h2>
-        <p className="text-muted text-lg max-w-2xl mx-auto">
+        <p className="section-subtitle">
           Pick the mode that matches your content. Each one is designed to keep you locked in.
         </p>
       </motion.div>
 
       {/* Features Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="features-grid">
         {features.map((feature, index) => (
           <motion.div
             key={feature.title}
@@ -70,17 +70,17 @@ export default function Features() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="glass-panel p-6 rounded-2xl border border-white/10 hover:border-primary/50 transition-all duration-300 group flex flex-col"
+            className="glass-panel feature-card"
           >
             {/* Icon */}
-            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+            <div className="feature-icon">
               <feature.icon size={24} className="text-primary" />
             </div>
             
             {/* Content */}
-            <h3 className="text-xl font-semibold mb-1">{feature.title}</h3>
-            <p className="text-primary/70 text-xs font-medium mb-3">{feature.subtitle}</p>
-            <p className="text-muted text-sm leading-relaxed flex-grow">{feature.description}</p>
+            <h3 className="feature-title">{feature.title}</h3>
+            <p className="feature-subtitle">{feature.subtitle}</p>
+            <p className="feature-desc">{feature.description}</p>
           </motion.div>
         ))}
       </div>

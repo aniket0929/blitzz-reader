@@ -98,7 +98,7 @@ export default function ReaderControls({
                 )}
               </div>
 
-                <div className="flex flex-wrap gap-8 justify-center flex-1">
+                <div className="controls-sliders">
                   <div className="controls-group">
                     <span className="text-muted text-xs font-semibold w-12">SPEED</span>
                     <input
@@ -128,7 +128,7 @@ export default function ReaderControls({
 
                 <button 
                   onClick={onChangeMode} 
-                  className="btn text-muted border border-white/10 px-4 py-2 rounded-lg text-sm hover:text-white hover:border-white/20 transition-colors"
+                  className="btn btn-change-mode"
                 >
                   Change Mode
                 </button>
