@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import { ReaderProvider } from '@/context/ReaderContext';
 import IntroSplash from '@/components/IntroSplash';
+import { Analytics } from "@vercel/analytics/next"
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 
@@ -27,6 +28,7 @@ export default function RootLayout({
         <ReaderProvider>
           <IntroSplash>{children}</IntroSplash>
         </ReaderProvider>
+        <Analytics/>
       </body>
     </html>
   );
